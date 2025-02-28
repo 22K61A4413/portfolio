@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgb(139, 108, 139); /* Same background as the intro section */
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: auto;
+            height: 60px; /* Set a fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin-right: 20px; /* Space to the right */
+        }
+
+        nav ul li {
+            margin-left: 20px; /* Space between nav items */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(216, 216, 240); /* Changed text color to white */
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 15px;
+        }
+
+        nav ul li a:hover {
+            color:  #fff;
+        }
+
+        /* Section styling */
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            color: white;
+        }
+
+        /* First half - Introduction */
+        .intro {
+            background: rgb(216, 216, 240);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 60vh;
+        }
+
+        .intro .details {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .intro .image-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro img {
+            width: 80%;
+            border-radius: 50%;
+            object-fit: cover;
+            max-width: 300px;
+        }
+
+        /* Second half - Skills, Certifications, Contact, education */
+        .details-section {
+            background:  rgb(139, 108, 139);
+            flex-direction: column;
+            padding-top: 50px;
+            padding: 50px 0;
+        }
+
+        h1 {
+            color: rgb(139, 108, 139);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2{
+            color: rgb(216, 216, 240);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align:left;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        .education{
+            background-color: rgb(134, 108, 139);
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            box-shadow: 100px;
+            text-align: center;
+            flex-wrap: wrap; /* Allows boxes to wrap if necessary */
+            gap: 20px; /* Add space between the boxes */
+        }
+
+        .education .education-box {
+            width: 30%; /* Adjust the width of each box */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            background-color: rgb(216, 216, 240);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Circles for Skills */
+        .skills {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(216, 216, 240);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* Hexagons for Certifications */
+        .certifications {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .hexagon {
+            width: 120px;
+            height: 70px;
+            background-color: rgb(216, 216, 240);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hexagon:before, .hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+        }
+
+        .hexagon:before {
+            bottom: 100%;
+            border-bottom: 35px solid rgb(216, 216, 240);
+        }
+
+        .hexagon:after {
+            top: 100%;
+            border-top: 35px solid rgb(216, 216, 240);
+        }
+
+        .hexagon a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hexagon a:hover {
+            text-decoration: underline;
+            color: rgb(134, 108, 139);
+        }
+
+        .contact p,.education p {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        a {
+            color: rgb(216, 216, 240);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        /* Additional styles for rectangular "Contact Me" section */
+        
+        .contact{
+            background-color: rgb(216, 216, 240);
+            color: black;
+            padding: 40px;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Width can be adjusted as needed */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact h2,.education h2{
+            color: rgb(216, 216, 240);
+        }
+
+        .contact p,.education p {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333; /* Dark text for contrast */
+        }
+
+        .contact a,.education a{
+            color: #3b5c98; /* Blue color for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact a:hover,.education a:hover {
+            text-decoration: underline;
+            color: rgb(139, 108, 139);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certificates</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main-content">
+
+        <!-- Introduction Section -->
+        <div class="section intro" id="home">
+            <div class="details" id="about">
+                <h1>Ammulu Bobbili</h1>
+                <p style="color:black;">Hello! I am a passionate student currently pursuing at Sasi Institute Of Technology And Engineering, Tadepalligudem.</p><br>
+                <p style="color:black;"> Motivated and analytical-minded Data Analytics student with a basic foundation in statistics, Python, SQL, and data visualization. Passionate about uncovering insights from data and solving real-world problems through data-driven decision-making. Seeking opportunities to apply my skills in a practical setting, gain hands-on experience, and contribute to impactful projects in the field of data analytics.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="https://res.cloudinary.com/daxthmmtg/image/upload/v1740734570/IMG20250208095137_q6a2tz.jpg" height=355 width=100 alt="Your Image">
+            </div>
+        </div>
+        
+        <!-- Education,Skills, Certifications, Contact Section -->       
+        <div class="section details-section" id="education" style="text-align: center;">
+
+            <div class="container"></div>
+                
+            <!-- Education Section -->
+            <h2>Educational Details</h2>
+            <div class="education">
+                <div class="education-box">
+                    <h3 style="color:black;">Bachelor of Technology (B.Tech)</h3>
+                    <p style="text-align: left;"><b>Institution:</b> Sasi Institute Of Technology And Engineering<br><b>Course:</b>CSD <br> <b>Year:</b> 2022 - present<br><b>Location:</b> Tadepalligudem<br><b>CGPA:</b> 8.94 (Current)</p>
+                </div>
+                <div class="education-box">
+                    <h3 style="color:black;">Intermediate</h3>
+                    <p style="text-align: left;"><b>Institution:</b> Government Junior College<br><b>Course:</b> MPC <br> <b>Year:</b> 2020-2022<br><b>Location:</b> Tadepalligudem<br><b>Percentage:</b> 84.9%</p>
+                </div>
+                <div class="education-box">
+                    <h3 style="color:black;">SSC</h3>
+                    <p style="text-align: left;"><b>Institution:</b> Z.P. High school<br><b>Year:</b> 2019-2020<br><b>Location:</b> Pippara<br><b>Percentage:</b> 97%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills, Certifications, Contact Section -->
+        <div class="section details-section" id="skills">
+            <div class="container">
+                <!-- Skills Section -->
+                <h2>Skills</h2>
+                <div class="skills">
+                    <div class="circle">C</div>
+                    <div class="circle">Python</div>
+                    <div class="circle">Java</div>
+                    <div class="circle">Html<br>Css<br>JavaScript</div>
+                    <div class="circle">SQL<br>MongoDB</div>
+                </div><br>
+
+                <!-- Certifications Section -->
+                <h2 id="certifications">Certifications</h2>
+                <div class="certifications">
+                    <div class="hexagon"><a href="https://ik.imagekit.io/8vk3ohxng/python.PNG?updatedAt=1733999409523" target="_blank">Python</a></div>
+                    <div class="hexagon"><a href="https://ik.imagekit.io/8vk3ohxng/ahtml.PNG?updatedAt=1733999401031" target="_blank">Html,</a><br>
+                                         <a href="https://ik.imagekit.io/8vk3ohxng/cssa.PNG?updatedAt=1733999306134" target="_blank">Css</a></div>
+                    <div class="hexagon"><a href="https://ik.imagekit.io/8vk3ohxng/mdb.PNG?updatedAt=1733998538474" target="_blank">MongoDB</a></div>
+                    <div class="hexagon"><a href="https://res.cloudinary.com/daxthmmtg/image/upload/v1738774329/aiml_yqrzyf.png" target="_blank">AI-ML Virtual Internship</a></div>
+                    <div class="hexagon"><a href="https://res.cloudinary.com/daxthmmtg/image/upload/v1738774432/androiddeveloper_ubmuag.png" target="_blank">Android Developer Virtual Internship</a></div>
+                </div><br><br>
+
+
+                <!-- Projects -->
+                <h2 id="projects">Projects</h2>
+                <div class="education">
+                    <div class="education-box"><a href="https://ik.imagekit.io/fu4uxhoyq/index.html?updatedAt=1740748587295" target="_blank">Simple Quiz App</a></div>
+                    <div class="education-box"><a href="https://ik.imagekit.io/fu4uxhoyq/indext.html?updatedAt=1740749072749" target="_blank">Tic Tac Toe</a><br>
+                </div><br><br>
+
+                <!-- Contact Section -->
+                <div>
+                    <h2 >Contact Me</h2>
+                    <div class="contact" id="contact">
+
+                        <p>Email: ammulubobbili430@gmail.com</p>
+                        <p>LinkedIn: <a href="https://www.linkedin.com/in/ammulu-bobbili-b33656280/" target="_blank">ammulu bobbili</a></p>
+                        <p>Github: <a href="https://github.com/22K61A4413">Ammulu Bobbili</a></p>
+                        <p>Phone: 9949658908</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
